@@ -1,0 +1,198 @@
+{% raw %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+.lince{--bg:#f2f4f9;--pap:#fff;--ink:#11152e;--mut:#5a6280;--line:#d9deec;--acc:#2338ff;--warn:#b3261e;color-scheme:light}
+@media(prefers-color-scheme:dark){.lince:not([data-theme="light"]){--bg:#0c0f20;--pap:#141932;--ink:#eef0ff;--mut:#98a0c4;--line:#262d52;--acc:#4a5bff;--warn:#ff8a80;color-scheme:dark}}
+.lince[data-theme="dark"]{--bg:#0c0f20;--pap:#141932;--ink:#eef0ff;--mut:#98a0c4;--line:#262d52;--acc:#4a5bff;--warn:#ff8a80;color-scheme:dark}
+.lince,.lince *{box-sizing:border-box}
+.lince *{margin:0}
+.lince [hidden]{display:none!important}
+.lince{overflow:hidden;font:400 16px/1.5 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.lince .w{max-width:1000px;margin:0 auto;padding:18px 22px 56px}
+.lince .top{display:flex;justify-content:space-between;align-items:center;padding-bottom:34px}
+.lince .lg{font:800 24px Unbounded,"Hanken Grotesk",sans-serif;letter-spacing:-.04em}
+.lince .tg{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--pap);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.lince h1{text-transform:none;font:800 clamp(28px,5.4vw,50px)/1.08 Unbounded,"Hanken Grotesk",sans-serif;letter-spacing:-.045em;max-width:17ch}
+.lince .lead{color:var(--mut);font-size:18px;max-width:46ch;margin:14px 0 26px}
+.lince .chips,.lince .sg{display:flex;flex-wrap:wrap;gap:8px}
+.lince .cp{font:600 15px "Hanken Grotesk",system-ui,sans-serif;border:1px solid var(--line);background:var(--pap);color:var(--ink);padding:8px 16px;border-radius:99px;cursor:pointer}
+.lince .cp[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lince .cols{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:26px;align-items:start}
+.lince .pn{background:var(--pap);border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:16px}
+.lince label,.lince .lb{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--mut)}
+.lince input[type=text],.lince input:not([type]),.lince select{font:500 16px "Hanken Grotesk",system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+.lince input[type=color]{width:100%;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:3px;cursor:pointer}
+.lince :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.lince .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lince hr{border:0;border-top:1px solid var(--line)}
+.lince .wn{color:var(--warn);font-size:14px;font-weight:600}
+.lince .st{position:relative;overflow:hidden;background:var(--acc);border-radius:26px;padding:28px 22px;display:grid;gap:20px;justify-items:center}
+.lince .tile{animation:pop .9s cubic-bezier(.2,1.2,.3,1) both;background:#fff;border-radius:18px;padding:14px;width:min(100%,320px);aspect-ratio:1;display:grid;place-items:center;transform:rotate(-2deg);box-shadow:0 18px 40px -16px #0008}
+.lince .tile svg{width:100%;height:100%;display:block;border-radius:6px}
+.lince .hint{color:#5a6280;text-align:center;padding:18px;font-size:15px}
+.lince #ct{color:#fff;opacity:.88;font-size:13px;word-break:break-all;text-align:center;max-width:320px;max-height:3.1em;overflow:hidden}
+.lince .bts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.lince .bt{background:#fff;color:#11152e;border:0;border-radius:99px;padding:12px 22px;font:700 15px "Hanken Grotesk",system-ui,sans-serif;cursor:pointer}
+.lince .bt[disabled]{opacity:.5;cursor:default}
+.lince .ft{margin-top:40px;color:var(--mut);font-size:14px}
+@media(max-width:820px){.lince .cols{grid-template-columns:1fr}}
+.lince .st>*{position:relative;z-index:1}
+.lince .st::before,.lince .st::after{content:"";position:absolute;top:16px;width:44px;height:44px;border:7px solid #ffffff2e;border-radius:11px}
+.lince .st::before{left:16px}
+.lince .st::after{right:16px}
+.lince .hero{position:relative}
+.lince .hero::before{content:"";position:absolute;inset:-60px -30px auto;height:400px;background:radial-gradient(var(--line) 1.6px,transparent 1.7px) 0 0/22px 22px;-webkit-mask:linear-gradient(#000,transparent);mask:linear-gradient(#000,transparent);pointer-events:none}
+.lince .hero>*{position:relative}
+.lince .how{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px}
+.lince .hw b{display:block;font:800 46px/1 Unbounded,"Hanken Grotesk",sans-serif;letter-spacing:-.05em;color:var(--acc)}
+.lince .hw h3{font:700 19px "Hanken Grotesk",system-ui,sans-serif;margin:12px 0 4px;text-transform:none}
+.lince .hw p,.lince details p{color:var(--mut)}
+.lince .sec{margin-top:70px}
+.lince .sec h2,.lince .ctc h2{font:800 clamp(22px,3.6vw,32px)/1.12 Unbounded,"Hanken Grotesk",sans-serif;letter-spacing:-.04em;text-transform:none}
+.lince .sec h2{margin-bottom:18px}
+.lince details{border-top:1px solid var(--line);padding:16px 2px}
+.lince details:last-of-type{border-bottom:1px solid var(--line)}
+.lince summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.lince summary::-webkit-details-marker{display:none}
+.lince summary::after{content:"+";font:600 26px/1 "Hanken Grotesk",sans-serif;color:var(--acc);transition:transform .2s}
+.lince details[open] summary::after{transform:rotate(45deg)}
+.lince details p{margin-top:10px;max-width:62ch}
+.lince .ctc{margin-top:70px;border-radius:26px;background:var(--ink);color:var(--bg);padding:36px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.lince .ctc p{opacity:.8;margin-top:6px}
+.lince .ctc a{background:var(--acc);color:#fff;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:99px;word-break:break-all}
+.lince .ft{margin-top:28px;text-align:center}
+@keyframes pop{from{transform:rotate(-14deg) scale(.7);opacity:0}}
+@media(max-width:820px){.lince .how{grid-template-columns:1fr}
+.lince .ctc{padding:28px}}
+@media(prefers-reduced-motion:reduce){.lince *{animation:none!important;transition:none!important}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<div class="lince" id="qrioso"><div class="w">
+<div class="top"><div class="lg">Qrioso</div><button class="tg" id="tg" aria-label="Cambiar entre modo claro y oscuro"></button></div>
+<div class="hero"><h1>Códigos QR de lo que sea</h1>
+<p class="lead">Elige qué quieres compartir, escribe los datos y descarga tu QR listo para imprimir o poner en tu perfil. Sin registrarte ni instalar nada.</p>
+<div class="chips" id="ch"></div></div>
+
+<div class="cols">
+<div class="pn">
+<div id="fl" style="display:grid;gap:14px"></div>
+<hr>
+<div class="lb">Forma de los puntos<div class="sg" id="sg"><button class="cp" data-s="0">Cuadrada</button><button class="cp" data-s="1">Redondeada</button><button class="cp" data-s="2">Puntos</button></div></div>
+<div class="g2">
+<label>Color del QR<input type="color" id="fg" value="#11152e"></label>
+<label>Color de fondo<input type="color" id="bg" value="#ffffff"></label>
+</div>
+<label>Corrección de errores<select id="ec"><option value="M">Normal</option><option value="H">Alta, aguanta más arañazos</option></select></label>
+<div class="wn" id="wn"></div>
+</div>
+<div class="st">
+<div class="tile" id="tl"></div>
+<div id="ct"></div>
+<div class="bts"><button class="bt" id="dp" disabled>Descargar PNG</button><button class="bt" id="ds" disabled>Descargar SVG</button></div>
+</div>
+</div>
+<div class="how">
+<div class="hw"><b>1</b><h3>Elige qué compartir</h3><p>Una web, tu WhatsApp, tu perfil de Instagram o TikTok, el Wi-Fi de tu casa y mucho más.</p></div>
+<div class="hw"><b>2</b><h3>Escribe los datos</h3><p>Solo lo imprescindible. El QR se actualiza al momento mientras escribes.</p></div>
+<div class="hw"><b>3</b><h3>Descarga y comparte</h3><p>PNG para redes y documentos, SVG para imprimir sin perder calidad.</p></div>
+</div>
+<div class="sec"><h2>Preguntas frecuentes</h2>
+<details><summary>¿Caducan los códigos QR?</summary><p>No. Son estáticos: el enlace o el dato va dentro del propio código, así que funcionan siempre que el destino siga existiendo.</p></details>
+<details><summary>¿Guardáis lo que escribo?</summary><p>No. El código se genera en tu navegador y lo que escribes no se envía a ningún servidor.</p></details>
+<details><summary>¿De qué tamaño lo imprimo?</summary><p>Como mínimo unos 2 × 2 cm, y más grande si se va a escanear desde lejos. Respeta siempre el margen blanco y no lo estires.</p></details>
+<details><summary>¿Cuándo uso PNG y cuándo SVG?</summary><p>El PNG sirve para redes sociales, correos y documentos. El SVG es vectorial: perfecto para carteles o tarjetas, porque no pierde nitidez a ningún tamaño.</p></details>
+<details><summary>Mi QR no se escanea, ¿qué hago?</summary><p>Comprueba que hay buen contraste (QR oscuro sobre fondo claro), prueba la corrección de errores en Alta y, antes de imprimir, escanéalo siempre con tu móvil.</p></details>
+<details><summary>¿Puedo usarlo en mi negocio?</summary><p>Sí. Puedes poner tus códigos en cartas, mesas, escaparates, tarjetas o envases.</p></details>
+</div>
+<div class="ctc"><div><h2>¿Tienes alguna duda?</h2><p>Escríbenos un correo y te echamos una mano.</p></div><a href="mailto:anasslzz100@gmail.com">anasslzz100@gmail.com</a></div>
+<p class="ft">Todo se genera en tu navegador: lo que escribes no se envía a ningún servidor.</p>
+</div>
+
+<script>
+const R=document.getElementById('qrioso');const $=s=>R.querySelector(s);
+const E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tr=u=>(u||'').trim(),hd=u=>tr(u).replace(/^@/,''),isU=u=>/^https?:\/\//i.test(u);
+const soc=b=>v=>tr(v.u)?(isU(tr(v.u))?tr(v.u):b+hd(v.u)):'';
+const U=[['u','Usuario o enlace','@tuusuario']];
+const esc=s=>s.replace(/([\\;,:"])/g,'\\$1');
+const T=[
+{k:'web',n:'Web',f:[['u','Dirección web','tuweb.com']],b:v=>tr(v.u)?(isU(tr(v.u))?tr(v.u):'https://'+tr(v.u)):''},
+{k:'wa',n:'WhatsApp',f:[['t','Teléfono con prefijo, sin el +','34600123456'],['m','Mensaje (opcional)','Hola, quiero más información']],b:v=>{const p=(v.t||'').replace(/\D/g,'');return p?'https://wa.me/'+p+(tr(v.m)?'?text='+encodeURIComponent(tr(v.m)):''):''}},
+{k:'ig',n:'Instagram',f:U,b:soc('https://instagram.com/')},
+{k:'tt',n:'TikTok',f:U,b:soc('https://www.tiktok.com/@')},
+{k:'yt',n:'YouTube',f:U,b:soc('https://youtube.com/@')},
+{k:'tg',n:'Telegram',f:U,b:soc('https://t.me/')},
+{k:'x',n:'X',f:U,b:soc('https://x.com/')},
+{k:'fb',n:'Facebook',f:U,b:soc('https://facebook.com/')},
+{k:'in',n:'LinkedIn',f:U,b:soc('https://linkedin.com/in/')},
+{k:'wifi',n:'Wi-Fi',f:[['s','Nombre de la red',''],['p','Contraseña (vacío si no tiene)','']],b:v=>tr(v.s)?'WIFI:T:'+(v.p?'WPA':'nopass')+';S:'+esc(tr(v.s))+';'+(v.p?'P:'+esc(v.p)+';':'')+';':''},
+{k:'mail',n:'Email',f:[['e','Correo','hola@tuweb.com'],['a','Asunto (opcional)','']],b:v=>tr(v.e)?'mailto:'+tr(v.e)+(tr(v.a)?'?subject='+encodeURIComponent(tr(v.a)):''):''},
+{k:'tel',n:'Teléfono',f:[['t','Número','+34 600 123 456']],b:v=>tr(v.t)?'tel:'+v.t.replace(/[^\d+]/g,''):''},
+{k:'txt',n:'Texto',f:[['t','Tu texto','Lo que quieras']],b:v=>tr(v.t)?v.t:''}
+];
+let cur=0,val={},o={s:0},last=null;
+
+function lum(h){const c=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255).map(x=>x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+function make(txt){
+  if(qrcode.stringToBytesFuncs&&qrcode.stringToBytesFuncs['UTF-8'])qrcode.stringToBytes=qrcode.stringToBytesFuncs['UTF-8'];
+  const q=qrcode(0,$('#ec').value);q.addData(txt);q.make();
+  const n=q.getModuleCount(),m=4,z=n+2*m,fg=$('#fg').value,bg=$('#bg').value;let d='',x='';
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++){
+    if(!q.isDark(r,c))continue;
+    const fp=(r<7&&c<7)||(r<7&&c>=n-7)||(r>=n-7&&c<7);
+    if(fp||o.s===0)d+='M'+(c+m)+' '+(r+m)+'h1v1h-1z';
+    else if(o.s===1)x+='<rect x="'+(c+m)+'" y="'+(r+m)+'" width="1" height="1" rx=".32"/>';
+    else x+='<circle cx="'+(c+m+.5)+'" cy="'+(r+m+.5)+'" r=".47"/>';
+  }
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+z+' '+z+'"'+(o.s===0?' shape-rendering="crispEdges"':'')+'><rect width="'+z+'" height="'+z+'" fill="'+bg+'"/><g fill="'+fg+'"><path d="'+d+'"/>'+x+'</g></svg>';
+}
+function draw(){
+  const t=T[cur],txt=t.b(val[cur]||{});let s=null,msg='';
+  if(txt){try{s=make(txt)}catch(e){msg='Hay demasiado contenido para un solo QR. Prueba con algo más corto.'}}
+  last=s?{s,k:t.k}:null;
+  $('#tl').innerHTML=s||'<div class="hint">'+(msg||'Rellena los datos y tu QR aparecerá aquí.')+'</div>';
+  $('#ct').textContent=s?txt:'';
+  $('#dp').disabled=$('#ds').disabled=!s;
+  const a=lum($('#fg').value),b=lum($('#bg').value),r=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+  $('#wn').textContent=r<3?'Poco contraste entre los colores: puede que no se escanee bien.':a>b?'Con el QR más claro que el fondo, algunos lectores no lo reconocen.':'';
+}
+function fields(){
+  $('#fl').innerHTML=T[cur].f.map(f=>'<label>'+f[1]+'<input data-k="'+f[0]+'" placeholder="'+E(f[2])+'" value="'+E((val[cur]||{})[f[0]]||'')+'" autocomplete="off"></label>').join('');
+}
+function chips(){
+  $('#ch').innerHTML=T.map((t,i)=>'<button class="cp" data-i="'+i+'" aria-pressed="'+(i===cur)+'">'+t.n+'</button>').join('');
+  R.querySelectorAll('#sg .cp').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.s===o.s));
+}
+$('#ch').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;cur=+b.dataset.i;chips();fields();draw()});
+$('#sg').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;o.s=+b.dataset.s;chips();draw()});
+$('#fl').addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;(val[cur]=val[cur]||{})[k]=e.target.value;draw()});
+['#fg','#bg','#ec'].forEach(s=>$(s).addEventListener('input',draw));
+
+async function save(name,data){
+  try{if(window.claude){const d=await claude.use('downloads');if(d){await d.save({filename:name,data});return}}}catch(e){return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(data);a.download=name;document.body.appendChild(a);a.click();a.remove();
+}
+$('#ds').onclick=()=>{if(last)save('qrioso-'+last.k+'.svg',new Blob([last.s],{type:'image/svg+xml'}))};
+$('#dp').onclick=()=>{
+  if(!last)return;const k=last.k,im=new Image();
+  im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=1024;const x=c.getContext('2d');x.imageSmoothingEnabled=false;x.drawImage(im,0,0,1024,1024);c.toBlob(b=>b&&save('qrioso-'+k+'.png',b),'image/png')};
+  im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(last.s);
+};
+
+try{const th=localStorage.getItem('qrioso-theme');if(th)R.dataset.theme=th}catch(e){}
+const root=R,mq=matchMedia('(prefers-color-scheme: dark)');
+const dark=()=>root.dataset.theme?root.dataset.theme==='dark':mq.matches;
+const SUN='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const MOON='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+const icon=()=>{$('#tg').innerHTML=dark()?SUN:MOON};
+$('#tg').onclick=()=>{const n=dark()?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('qrioso-theme',n)}catch(e){}icon()};
+mq.addEventListener('change',icon);
+
+function boot(){icon();chips();fields();draw()}
+if(window.qrcode)boot();
+else{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';s.onload=boot;s.onerror=()=>{icon();chips();fields();$('#tl').innerHTML='<div class="hint">No se pudo cargar el generador. Recarga la página.</div>'};document.head.appendChild(s)}
+</script>
+</div>
+{% endraw %}
