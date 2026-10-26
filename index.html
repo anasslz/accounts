@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi tienda — Galleta</title>
+<meta name="description" content="Tienda de productos Galleta con pago mediante PayPal.">
+<style>
+#gl,#gl *{box-sizing:border-box}
+#gl{--bg:#f6f1fa;--sf:#fff;--ink:#2b1b3d;--mut:#6b5a7e;--ln:#e3d9ee;--in:#faf7fd;--ac:#7c3aed;--acx:#fff;--hl:#ffcf5c;--ok:#0f8a5f;color-scheme:light;max-width:1040px;margin:0 auto;padding:clamp(18px,3.5vw,40px);background:var(--bg);color:var(--ink);border-radius:24px;font:16px/1.55 var(--font-body-family,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif);transition:background .25s,color .25s}
+#gl[data-theme=dark]{--bg:#150f1f;--sf:#201633;--ink:#f3eafd;--mut:#b7a6cf;--ln:#34264d;--in:#1a1229;--ac:#b794ff;--acx:#1c0f36;--hl:#ffd479;--ok:#4fdca7;color-scheme:dark}
+#gl h1,#gl h2,#gl p{margin:0;padding:0}
+#gl [hidden]{display:none!important}
+#gl :focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+#gl .gl-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+#gl .gl-brand{display:flex;gap:10px;align-items:center;font-size:21px;font-weight:800;letter-spacing:-.03em}
+#gl .gl-logo{width:34px;height:34px}
+#gl .gl-sw{display:inline-flex;align-items:center;gap:10px;background:var(--sf);color:var(--ink);border:1px solid var(--ln);border-radius:999px;padding:6px 14px 6px 8px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer}
+#gl .gl-knob{width:34px;height:20px;border-radius:99px;background:var(--ln);position:relative;transition:background .2s}
+#gl .gl-knob:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--sf);box-shadow:0 0 0 1px var(--mut);transition:transform .2s}
+#gl [aria-checked=true] .gl-knob{background:var(--ac)}
+#gl [aria-checked=true] .gl-knob:after{transform:translateX(14px)}
+#gl h1{font-size:clamp(30px,5vw,48px);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:34px 0 12px;max-width:16em}
+#gl .gl-sub{color:var(--mut);font-size:17px;max-width:58ch}
+#gl .gl-grid{display:grid;gap:18px;margin-top:28px}
+#gl .gl-card{display:flex;flex-direction:column;gap:10px;background:var(--sf);border:1px solid var(--ln);border-radius:22px;padding:16px}
+#gl .gl-art{display:grid;place-items:center;aspect-ratio:4/3;border-radius:14px;background:var(--in)}
+#gl .gl-art svg{width:58%;height:auto}
+#gl .gl-card h2{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+#gl .gl-desc{color:var(--mut);font-size:15px;flex:1}
+#gl .gl-price{font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
+#gl .gl-price span{background:linear-gradient(transparent 62%,var(--hl) 62%);padding:0 2px}
+#gl .gl-form{display:flex;flex-direction:column;gap:10px}
+#gl .gl-qty{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600}
+#gl .gl-qty select{font:inherit;padding:8px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--in);color:var(--ink)}
+#gl .gl-tot{font-size:14px;color:var(--mut);text-align:right;font-variant-numeric:tabular-nums}
+#gl .gl-buy{border:0;border-radius:14px;background:var(--ac);color:var(--acx);padding:14px;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
+#gl .gl-buy:hover{filter:brightness(1.08)}
+#gl .gl-fine{margin-top:26px;font-size:14px;color:var(--mut)}
+#gl a{color:var(--ac);font-weight:700}
+#gl .gl-cancel{margin-top:22px;padding:12px 16px;border-radius:12px;border:1px solid var(--hl);background:var(--in)}
+#gl .gl-thx{text-align:center;padding:clamp(30px,8vw,76px) 8px}
+#gl .gl-tick{display:grid;place-items:center;width:88px;height:88px;margin:0 auto 20px;border-radius:50%;background:var(--ok)}
+#gl .gl-tick svg{width:44px;height:44px;fill:none;stroke:var(--acx);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+#gl .gl-thx h1{margin:0 auto 12px}
+#gl .gl-thx .gl-sub{margin:0 auto 10px}
+#gl .gl-back{display:inline-block;margin-top:18px;border-radius:14px;background:var(--ac);color:var(--acx);padding:13px 26px;text-decoration:none;font-weight:800}
+@media (min-width:720px){
+  #gl .gl-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  #gl,#gl *,#gl *:after{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+ 
+<div id="gl" data-theme="light">
+  <div class="gl-top">
+    <div class="gl-brand">
+      <svg class="gl-logo" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#e8b068"/><circle cx="14" cy="15" r="2.6" fill="#4a2c1d"/><circle cx="26" cy="13" r="2.2" fill="#4a2c1d"/><circle cx="25" cy="25" r="2.6" fill="#4a2c1d"/><circle cx="13" cy="26" r="2.2" fill="#4a2c1d"/></svg>
+      <span id="gl-name">Mi tienda</span>
+    </div>
+    <button type="button" id="gl-theme" class="gl-sw" role="switch" aria-checked="false"><span class="gl-knob" aria-hidden="true"></span>Modo oscuro</button>
+  </div>
+ 
+  <div id="gl-main">
+    <h1>Elige lo que quieres y paga con PayPal</h1>
+    <p class="gl-sub">Pago seguro con PayPal. Introduce tu correo antes de continuar con PayPal. Guarda tu ticket de referencia para cualquier consulta.</p>
+    <p class="gl-cancel" id="gl-cancel" role="status" hidden>Has cancelado el pago y no se ha cobrado nada. Puedes elegir de nuevo cuando quieras.</p>
+    <div class="gl-grid" id="gl-grid"></div>
+    <p class="gl-fine">¿Dudas? Escríbenos a <a class="gl-mail" href="#"></a>.</p>
+  </div>
+ 
+  <section class="gl-thx" id="gl-thx" hidden aria-labelledby="gl-tt">
+    <div class="gl-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1 id="gl-tt">¡Gracias por tu compra!</h1>
+    <p class="gl-sub">Esta página se ha abierto al volver de PayPal. Comprueba en tu cuenta de PayPal que el pago aparece completado. Guarda tu ticket de referencia; esta versión todavía no verifica pagos ni envía correos automáticamente.</p>
+    <p class="gl-fine" id="gl-ticket" aria-live="polite"></p>
+    <p class="gl-fine">¿Alguna duda? Escríbenos a <a class="gl-mail" href="#"></a>.</p>
+    <a class="gl-back" id="gl-back" href="#">Volver a la tienda</a>
+  </section>
+</div>
+ 
+<script>
+(function () {
+  'use strict';
+ 
+  /* ============ CAMBIA AQUÍ LO QUE QUIERAS ============ */
+  var CONFIG = {
+    tienda: 'Mi tienda',                       // nombre que sale arriba
+    paypal: 'anasslaasiri100@gmail.com',       // correo de tu cuenta de PayPal: aquí cobras
+    contacto: 'anaslasivi065@gmail.com',       // correo que ven los clientes para dudas
+    moneda: 'EUR',
+    pedirDireccion: true                       // true = PayPal pide la dirección de envío; false = no (productos digitales)
+  };
+  var PRODUCTOS = [
+    { nombre: 'Galleta', desc: 'Aquí va la descripción de tu producto.', precio: 2.00 },
+    { nombre: 'Galleta', desc: 'Aquí va la descripción de tu producto.', precio: 2.00 },
+    { nombre: 'Galleta', desc: 'Aquí va la descripción de tu producto.', precio: 2.00 }
+  ];
+  /* ===================================================== */
+ 
+  var $ = function (i) { return document.getElementById(i); };
+  var root = $('gl'), BASE = location.href.split('#')[0].split('?')[0];
+  var eur = new Intl.NumberFormat('es-ES', { style: 'currency', currency: CONFIG.moneda });
+  var COL = [['#e8b068', '#4a2c1d'], ['#c4825a', '#f6e3c5'], ['#f2a9bd', '#7a2e45']];
+  var CHIPS = [[40, 42, 6], [76, 36, 5], [86, 64, 6], [57, 62, 5], [36, 80, 6], [72, 88, 5], [56, 30, 4]];
+ 
+  function el(t, c, x) {
+    var e = document.createElement(t);
+    if (c) e.className = c;
+    if (x != null) e.textContent = x;
+    return e;
+  }
+  function hid(f, n, v) {
+    var i = document.createElement('input');
+    i.type = 'hidden'; i.name = n; i.value = v;
+    f.appendChild(i);
+    return i;
+  }
+  function art(c) {
+    return '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="' + c[0] + '"/><circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="3"/>' +
+      CHIPS.map(function (p) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + p[2] + '" fill="' + c[1] + '"/>'; }).join('') + '</svg>';
+  }
+ 
+  /* ---------- Modo claro / oscuro ---------- */
+  var tb = $('gl-theme'), TK = 'gl-theme';
+  function setTheme(t, keep) {
+    root.setAttribute('data-theme', t);
+    tb.setAttribute('aria-checked', String(t === 'dark'));
+    if (keep) { try { localStorage.setItem(TK, t); } catch (e) {} }
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(TK); } catch (e) {}
+  setTheme(saved === 'dark' || saved === 'light' ? saved : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
+  tb.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true); });
+ 
+  /* ---------- Tienda ---------- */
+  $('gl-name').textContent = CONFIG.tienda;
+  Array.prototype.forEach.call(root.querySelectorAll('.gl-mail'), function (a) {
+    a.textContent = CONFIG.contacto;
+    a.href = 'mailto:' + CONFIG.contacto + '?subject=' + encodeURIComponent('Duda sobre mi pedido');
+  });
+  $('gl-back').href = BASE;
+ 
+  PRODUCTOS.forEach(function (p, i) {
+    var card = el('article', 'gl-card'), a = el('div', 'gl-art');
+    a.innerHTML = art(COL[i % COL.length]);
+    card.appendChild(a);
+    card.appendChild(el('h2', null, p.nombre));
+    card.appendChild(el('p', 'gl-desc', p.desc));
+    var pr = el('p', 'gl-price'); pr.appendChild(el('span', null, eur.format(p.precio))); card.appendChild(pr);
+ 
+    /* Formulario de pago de PayPal: cobra en la cuenta de CONFIG.paypal y vuelve a esta página con ?pago=ok */
+    var f = el('form', 'gl-form');
+    f.method = 'post'; f.action = 'https://www.paypal.com/cgi-bin/webscr'; f.target = '_top';
+    hid(f, 'cmd', '_xclick');
+    hid(f, 'business', CONFIG.paypal);
+    hid(f, 'item_name', p.nombre);
+    hid(f, 'item_number', String(i + 1));
+    hid(f, 'amount', p.precio.toFixed(2));
+    hid(f, 'currency_code', CONFIG.moneda);
+    hid(f, 'lc', 'ES');
+    hid(f, 'charset', 'utf-8');
+    hid(f, 'no_shipping', CONFIG.pedirDireccion ? '2' : '1');
+    hid(f, 'no_note', '1');
+    hid(f, 'rm', '1');
+    hid(f, 'return', BASE + '?pago=ok');
+    hid(f, 'cancel_return', BASE + '?pago=cancelado');
+    var qty = hid(f, 'quantity', '1');
+    var custom = hid(f, 'custom', '');
+    var emailLabel = el('label', 'gl-qty', 'Tu correo electrónico');
+    var emailInput = el('input');
+    emailInput.type = 'email'; emailInput.name = 'payer_email'; emailInput.required = true; emailInput.autocomplete = 'email'; emailInput.placeholder = 'tunombre@correo.com';
+    emailInput.style.cssText = 'width:100%;padding:12px;border:1px solid var(--ln);border-radius:10px;background:var(--in);color:var(--ink);font:inherit';
+    emailLabel.style.cssText = 'display:flex;flex-direction:column;align-items:stretch;gap:8px';
+    emailLabel.appendChild(emailInput);
+ 
+    var lab = el('label', 'gl-qty', 'Cantidad'), sel = el('select'), tot = el('p', 'gl-tot');
+    for (var n = 1; n <= 10; n++) { var o = el('option', null, String(n)); o.value = String(n); sel.appendChild(o); }
+    function upd() { qty.value = sel.value; tot.textContent = 'Total: ' + eur.format(p.precio * Number(sel.value)); }
+    sel.addEventListener('change', upd); upd();
+    lab.appendChild(sel);
+    var b = el('button', 'gl-buy', 'Comprar con PayPal'); b.type = 'submit';
+    f.appendChild(emailLabel); f.appendChild(lab); f.appendChild(tot); f.appendChild(b);
+    f.addEventListener('submit', function () {
+      var d = new Date();
+      var date = String(d.getFullYear()) + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+      var ticket = 'GAL-' + date + '-' + Math.random().toString(36).slice(2,7).toUpperCase();
+      var order = { ticket: ticket, email: emailInput.value.trim(), product: p.nombre, quantity: sel.value, amount: (p.precio * Number(sel.value)).toFixed(2), created: d.toISOString() };
+      try { localStorage.setItem('galleta-last-order', JSON.stringify(order)); } catch (e) {}
+      custom.value = 'Ticket: ' + ticket + ' | Email: ' + order.email;
+    });
+    card.appendChild(f);
+    $('gl-grid').appendChild(card);
+  });
+ 
+  /* ---------- Página de gracias / pago cancelado ---------- */
+  var pago = new URLSearchParams(location.search).get('pago');
+  if (pago === 'ok') {
+    $('gl-main').hidden = true; $('gl-thx').hidden = false;
+    document.title = 'Referencia de pedido — Mi tienda';
+    try {
+      var order = JSON.parse(localStorage.getItem('galleta-last-order') || 'null');
+      if (order && order.ticket) $('gl-ticket').textContent = 'Tu ticket de referencia: ' + order.ticket + ' · Correo: ' + order.email;
+      else $('gl-ticket').textContent = 'No se encontró un ticket guardado en este navegador. Comprueba el pago directamente en PayPal.';
+    } catch (e) { $('gl-ticket').textContent = 'Comprueba el pago directamente en PayPal.'; }
+  } else if (pago === 'cancelado') {
+    $('gl-cancel').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
